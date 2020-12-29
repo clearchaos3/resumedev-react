@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 export default function Repo({ repo }) {
-
     return (
-        <div>
-            <span>{repo.name}</span>
-        </div>
-    )
+        <>
+            <div className="repoName">
+                {repo.name} - <span className="language">{repo.language}</span>
+            </div>
+            <div className="repoDescription">{repo.description}</div>
+            <br></br>
+        </>
+    );
 }

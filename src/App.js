@@ -22,7 +22,7 @@ function App() {
                 setUserData(data);
             })
             .then(
-                fetch(`https://api.github.com/users/clearchaos3/repos`)
+                fetch('https://api.github.com/users/clearchaos3/repos')
                     .then((res) => res.json())
                     .then((data) => {
                         setRepos(data);
@@ -53,26 +53,31 @@ function App() {
     return (
         <div className="App">
             <NavBar />
-            <form
-                className="search"
-                noValidate
-                autoComplete="off"
-                onSubmit={handleSubmit}
-            >
-                <TextField
-                    label="GitHub Username"
-                    variant="outlined"
-                    onChange={handleSearch}
-                />
-                <Button variant="contained" color="primary" type="submit">
-                    Create My Resume
-                </Button>
-            </form>
-            <Paper>
-                <p>{name}</p>
-                <p>{location}</p>
-                <RepoList repos={repos} />
-            </Paper>
+            <div className="search">
+                <form
+                    className="search"
+                    noValidate
+                    autoComplete="off"
+                    onSubmit={handleSubmit}
+                >
+                    <TextField
+                        label="GitHub Username"
+                        variant="outlined"
+                        onChange={handleSearch}
+                    />
+                    <Button variant="contained" color="primary" type="submit">
+                        Create My Resume
+                    </Button>
+                </form>
+            </div>
+            <div className="resume">
+                <Paper className="resumePaper">
+                    <div className="name">{name}</div>
+                    <div className="location">{location}</div>
+                    <h3>Projects:</h3>
+                    <RepoList repos={repos} />
+                </Paper>
+            </div>
         </div>
     );
 }
